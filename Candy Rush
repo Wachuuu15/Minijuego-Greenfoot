@@ -1,0 +1,123 @@
+import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
+
+/**
+ * Me sale un poco loko
+ * 
+ * Jennifer Michelle Toxcon Ordoñez
+ * Version 1
+ */
+public class Myworld extends World
+{
+    private counter score;
+    private counter level;
+    counter cont=new counter();
+    
+    
+    private int velocidad_auto;
+    private int num_adelante;
+    private int num_nivel;
+    private mor alonso;
+    private int num_rivales;
+    
+
+    /**
+     * Constructor for objects of class Myworld.
+     * 
+     */
+    public Myworld()
+    {    
+        // Create a new world with 600x400 cells with a cell size of 1x1 pixels.
+        super(560, 600, 1);
+        num_adelante = 0;
+        num_nivel= 0;
+        velocidad_auto = 2;
+        
+        score = new counter("score: " );
+        level = new counter("level: " );
+        level.add(1);
+        
+        alonso = new mor (velocidad_auto);
+        addObject(alonso, 280,500);
+        addObject(level, 75,50);
+        addObject(score,75,90);
+    }
+    
+    
+    public void act (){
+        aumentar_dificultad();
+        anadir_rivales();
+    }
+    
+    public counter getCounter(){
+        return cont;
+    }
+    
+    public int getRandomNumber(int start, int end){
+        int normal = Greenfoot.getRandomNumber(end-start+1);
+        return normal + start;
+    }
+    
+     public void aumentar_puntuacion(int valor){
+        score.add(valor);
+    }
+    
+    public void aumentar_num_adelantamientos(){
+        num_adelante++;
+    }
+    
+    public void disminuir_num_rivales(){
+        num_rivales--;
+    }
+    
+    public void aumentar_dificultad(){
+        if(num_adelante == num_nivel);
+        num_adelante = 0;
+        num_nivel = num_nivel + 2;
+        level.add(1);
+    }
+    
+    public void anadir_rivales(){
+        if(num_rivales == 0){
+            int carril = getRandomNumber(0,3);
+            
+            if (carril == 0){
+               addObject(new ros1(velocidad_auto),160,90); 
+            }
+            else if(carril == 1){
+                addObject(new ros1(velocidad_auto),300,90);
+            }
+            else {
+                addObject(new ros1(velocidad_auto),400,90);
+            }
+            
+            carril++;
+            carril = carril % 3;
+            
+            if (carril == 0){
+               addObject(new ros1(velocidad_auto),160,90); 
+            }
+            else if(carril == 1){
+                addObject(new ros1(velocidad_auto),300,90);
+            }
+            else {
+                addObject(new ros1(velocidad_auto),400,90);
+            }
+            carril++;
+            carril = carril % 2;
+            
+            if (carril == 0){
+               addObject(new ros1(velocidad_auto),160,90); 
+            }
+            else if(carril == 1){
+                addObject(new ros1(velocidad_auto),300,90);
+            }
+            else {
+                addObject(new ros1(velocidad_auto),400,90);
+            }
+            
+            
+            num_rivales = 3;
+        }
+    }
+}
+    
