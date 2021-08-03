@@ -1,0 +1,30 @@
+import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
+
+/**
+ * Write a description of class button here.
+ * 
+ * @author (your name) 
+ * @version (a version number or a date)
+ */
+public class button extends Actor
+{
+    private boolean mouseOver = false;
+    
+    public void checkMouse()
+    {
+        if(Greenfoot.mouseMoved(null))
+        {
+            mouseOver = Greenfoot.mouseMoved(this);
+        }
+        
+    }
+    
+    public void checkClick(World world)
+    {
+        if (Greenfoot.mouseClicked(this))
+    {
+        Greenfoot.setWorld(world);
+    }
+    
+    }
+}
