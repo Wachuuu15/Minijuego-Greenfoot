@@ -1,0 +1,51 @@
+import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
+
+/**
+ * Intentando realizar el jueguito
+ * 
+ * Jennifer Toxcon 
+ * Version 1
+ */
+public class mor extends Actor
+{
+    private int speed; 
+    
+    public mor(int v) {
+        speed = 13;
+    }
+    
+    /**
+     * Act - do whatever the mor wants to do. This method is called whenever
+     * the 'Act' or 'Run' button gets pressed in the environment.
+     */
+    public void act()
+    {
+        checkCollision();
+        
+        if (Greenfoot.isKeyDown("right")){
+            if(getX() < 430)
+                setLocation(getX() + speed,getY());
+        }
+        
+        if (Greenfoot.isKeyDown("left")){
+            if(getX() > 110)
+                setLocation(getX() - speed,getY());
+        }
+        if (Greenfoot.isKeyDown("up")){
+            if(getY() > 300)
+                setLocation(getX() ,getY() -speed);
+        }
+        if (Greenfoot.isKeyDown("down")){
+            if(getY() < 540)
+                setLocation(getX() ,getY() +speed);
+        }
+        // Ad// Ad// Ad// Add your action code here.
+    }
+    
+    public void checkCollision(){
+        Actor collided = getOneIntersectingObject(ros1.class);
+        if(collided!=null) {
+           Greenfoot.setWorld(new fin());
+    }
+    }
+}
