@@ -1,0 +1,34 @@
+import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
+
+/**
+ * Write a description of class ros1 here.
+ * 
+ * @author (your name) 
+ * @version (a version number or a date)
+ */
+public class ros1 extends Actor
+{
+    private int speed;
+    
+    public ros1(int v) {
+        speed = 20;
+        
+    }
+    
+    
+    /**
+     * Act - do whatever the ros1 wants to do. This method is called whenever
+     * the 'Act' or 'Run' button gets pressed in the environment.
+     */
+    public void act()
+    {
+    setLocation (getX(),getY() + speed);
+        if(getY () >= getWorld().getHeight()-1){
+            Myworld juego = (Myworld) getWorld(); 
+            juego.removeObject(this);
+            juego.aumentar_puntuacion(10);
+            juego.disminuir_num_rivales();
+            juego.aumentar_num_adelantamientos();
+        }
+    }
+}
