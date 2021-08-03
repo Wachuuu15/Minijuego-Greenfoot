@@ -1,0 +1,64 @@
+import greenfoot.*; 
+// (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
+/**
+ * Write a description of class counter here.
+ * 
+ * @author (your name) 
+ * @version (a version number or a date)
+ */
+public class counter extends Actor
+{
+    private int cont;
+    private String text;
+    private int target = 0;
+    private int stringLength;
+    public counter(){
+        this("");
+    }
+    
+    public counter(String prefix)
+    {
+        text = prefix;
+        stringLength = (text.length() + 2) * 16;
+
+        setImage(new GreenfootImage(stringLength, 24));
+        GreenfootImage image = getImage();
+        Font font = image.getFont();
+        image.setFont(font.deriveFont(24.0F));  // use larger font
+        image.setColor(Color.BLACK);
+        
+        updateImage();
+    }
+    
+    public void incrementar()
+    {
+       cont++;
+    }
+    
+    
+        public void add(int score){
+        target += score;
+    }
+    
+    /**public void subtract(int score){
+        target -= score;
+
+    }
+    
+    
+    public void decrementar ()
+    {
+        cont--;
+    }
+    */
+   
+    public int getContar(){
+        return cont;
+    }
+    
+     private void updateImage(){
+        GreenfootImage image = getImage();
+        image.clear();
+        image.drawString(text + cont, 1, 18);
+    }
+}
